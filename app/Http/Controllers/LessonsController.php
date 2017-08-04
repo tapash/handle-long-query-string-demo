@@ -4,12 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Lesson;
+use App\Filters\LessonFilters;
 
 class LessonsController extends Controller
 {
-    public function show()
+    public function show(LessonFilters $filters)
     {
-    	$lessions = Lesson::all();
-    	return $lessions;
+    	// $lesson = (new Lesson())->newQuery();
+
+    	// if(request()->exists('popular')) {
+    	// 	$lesson->orderBy('views', 'acs');
+    	// }
+
+    	// return $lesson->get();
+    	// 
+    	
+    	return Lesson::filter($filters)->get();
+    	
     }
 }
