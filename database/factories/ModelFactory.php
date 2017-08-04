@@ -16,9 +16,22 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'name' 			=> $faker->name,
+        'email' 		=> $faker->unique()->safeEmail,
+        'password' 		 => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(App\Lesson::class, function (Faker\Generator $faker) {
+
+    return [
+        'title' 		=> $faker->sentence,
+        'body' 			=> $faker->paragraph,
+        'views' 		=> $faker->numberBetween(1, 5000),
+        'length' 		=> $faker->numberBetween(1, 2000),
+        'difficulty' 	=> $faker->randomElement(['beginner', 'intermediate', 'advanced'])
+    ];
+});
+
