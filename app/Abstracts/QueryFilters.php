@@ -15,6 +15,13 @@ abstract class QueryFilters
 		$this->request = $request;	
 	}
 
+    /**
+     * main method
+     * get all query request and check if the corresmponding 
+     * method is exists
+     * if found call that method and hook the query with builder object
+     * return builder object
+     */
     public function apply(Builder $builder)
     {
         $this->builder = $builder;

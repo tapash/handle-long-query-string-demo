@@ -5,25 +5,34 @@ use App\Abstracts\QueryFilters;
 
 class LessonFilters extends QueryFilters
 {
-	/**
-	 * add methods as much as you can for query strings
-	 * like: /?popular&difficulty=advanced&length
-	 * @param  string $order [description]
-	 * @return [type]        [description]
-	 */
 	
+	/**
+	 * find by popular
+	 * @param  string $order /?popular
+	 * @return object   Databse builder object
+	 */
 	public function popular($order = 'desc')
 	{
 		return $this->builder->orderBy('views', $order);
 	}
 
+	/**
+	 * find by difficulty
+	 * @param  string $level /?difficulty=advanced
+	 * @return object        Database builder object
+	 */
 	public function difficulty($level)
     {
         return $this->builder->where('difficulty', $level);
     }
 
-    public function length($order = 'asc')
+	/**
+	 * find by lenth
+	 * @param  string $length /?length
+	 * @return object   Databse builder object
+	 */
+    public function length($length = 'asc')
     {
-        return $this->builder->orderBy('length', $order);
+        return $this->builder->orderBy('length', $length);
     }
 }
